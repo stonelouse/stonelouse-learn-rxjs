@@ -1,22 +1,32 @@
 import { take, flatMap } from 'rxjs/operators';
 import { noop } from 'rxjs/index';
 
+/* ==== Transformation ==== */
+/*  --- concatMap --- */
+import {concatMap1Src as src05ConcatMap1Src} from './05-trnsf-concatMap';
+src05ConcatMap1Src.subscribe(
+  (n: number) => console.log('05a', n, '05A')
+);
+import {mergeMap1Src as src05MergeMap1Src} from './05-trnsf-concatMap';
+src05MergeMap1Src.subscribe(
+  (n: number) => console.log('05b', n, '05B')
+);
+
 /* ==== Create Observable ==== */
 /*  --- of array --- */
-import {arraySource as src04ArraySource} from './04-src-of';
-src04ArraySource.subscribe(
-  (ns: [number]) => console.log(ns),
-  noop,
-  _ => console.log('array source completed')
-)
-src04ArraySource.pipe(
-  flatMap((ns: number[]) => ns)
-).subscribe(
-  (n: [number]) => console.log(n),
-  noop,
-  _ => console.log('array source completed')
-)
-
+// import {arraySource as src04ArraySource} from './04-src-of';
+// src04ArraySource.subscribe(
+//   (ns: [number]) => console.log(ns),
+//   noop,
+//   _ => console.log('array source completed')
+// )
+// src04ArraySource.pipe(
+//   flatMap((ns: number[]) => ns)
+// ).subscribe(
+//   (n: [number]) => console.log(n),
+//   noop,
+//   _ => console.log('array source completed')
+// )
 /*  --- of sequence --- */
 // import {seqSource as src04SeqSource} from './04-src-of';
 // src04SeqSource.subscribe(
